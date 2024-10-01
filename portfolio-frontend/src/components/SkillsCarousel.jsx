@@ -1,13 +1,17 @@
 import React, { useRef, useEffect } from 'react';
 import { gsap } from 'gsap';
 import { FaReact, FaNodeJs, FaPython, FaJava, FaGitAlt, FaDatabase } from 'react-icons/fa'; 
-import { SiTailwindcss, SiJavascript, SiTypescript, SiFlask, SiSocketdotio, SiWebrtc, SiFramer, SiMui } from 'react-icons/si';
+import { SiTailwindcss, SiJavascript, SiTypescript, SiFlask, SiSocketdotio, SiWebrtc, SiFramer, SiMui, SiExpress, SiOpencv } from 'react-icons/si';
 import { DiMongodb } from "react-icons/di";
+import { RiNextjsLine } from "react-icons/ri";
+import { IoLogoFirebase } from "react-icons/io5";
 
 const skills = [
   { name: 'MongoDB', icon: <DiMongodb /> },
   { name: 'ReactJS', icon: <FaReact /> },
   { name: 'Node.js', icon: <FaNodeJs /> },
+  { name: 'Express.js', icon: <SiExpress /> },
+  { name: 'Next.JS', icon: <RiNextjsLine /> },
   { name: 'Python', icon: <FaPython /> },
   { name: 'C/C++', icon: '💻' },
   { name: 'JavaScript', icon: <SiJavascript /> },
@@ -19,7 +23,10 @@ const skills = [
   { name: 'Socket.io', icon: <SiSocketdotio /> },
   { name: 'WebRTC', icon: <SiWebrtc /> },
   { name: 'Framer-motion', icon: <SiFramer />},
-  { name: 'Material UI', icon: <SiMui />}
+  { name: 'Material UI', icon: <SiMui />},
+  { name: 'OpenCV', icon: <SiOpencv />},
+  { name: 'Firebase', icon: <IoLogoFirebase />},
+  // { name: 'Material UI', icon: <SiMui />}
 ];
 
 const SkillsCarousel = () => {

@@ -4,7 +4,7 @@ import { gsap } from 'gsap';
 import { FaUser, FaProjectDiagram, FaEnvelope } from 'react-icons/fa'; // Importing icons
 import { FaArrowRight } from 'react-icons/fa'; // Import arrow icon
 
-const TrafficLightNavigation = ({ darkTheme }) => {
+const TrafficLightNavigation = ({ darkTheme, onAboutClick, onProjectClick }) => {
   const handleMouseEnter = (e) => {
     gsap.to(e.target, {
       scale: 1.1,
@@ -28,6 +28,7 @@ const TrafficLightNavigation = ({ darkTheme }) => {
         className={`flex items-center justify-between space-x-4 w-full p-4 rounded-lg cursor-pointer transition-all duration-300 ${darkTheme ? 'bg-white hover:bg-gray-200' : 'bg-gray-700 hover:bg-gray-600'} transform hover:translate-y-[-2px]`}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
+        onClick={onAboutClick} // Trigger modal open on click
         whileHover={{ backgroundColor: darkTheme ? '#E5E7EB' : '#4B5563' }} // Light gray for dark theme
       >
         <div className="flex items-center space-x-2">
@@ -49,6 +50,7 @@ const TrafficLightNavigation = ({ darkTheme }) => {
         className={`flex items-center justify-between space-x-4 w-full p-4 rounded-lg cursor-pointer transition-all duration-300 ${darkTheme ? 'bg-white hover:bg-gray-200' : 'bg-gray-700 hover:bg-yellow-500'} transform hover:translate-y-[-2px]`}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
+        onClick={onProjectClick} // Trigger project modal open on click
         whileHover={{ backgroundColor: darkTheme ? '#E5E7EB' : '#F59E0B' }} // Light gray for dark theme
       >
         <div className="flex items-center space-x-2">

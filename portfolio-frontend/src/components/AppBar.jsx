@@ -71,7 +71,7 @@ const AppBar = ({ onThemeToggle }) => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.3 }}
             >
-              Github : Mantissagithub
+              Github
             </motion.div>
           )}
         </motion.div>
