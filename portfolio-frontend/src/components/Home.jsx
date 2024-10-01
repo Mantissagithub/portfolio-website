@@ -6,6 +6,7 @@ import TypingHi from './TypingHi';
 import SkillsCarousel from './SkillsCarousel';
 import SummarizedAboutMe from './SummarizedAboutMe';
 import RecentProjectCompleted from './RecentProjectCompleted';
+import ConnectWithMe from './ContactForm';
 import { gsap } from 'gsap';
 import { motion } from 'framer-motion';
 import { Box, Modal } from '@mui/material';
@@ -14,6 +15,7 @@ const Home = () => {
   const [darkTheme, setDarkTheme] = useState(false);
   const [showAboutModal, setShowAboutModal] = useState(false); 
   const [showProjectModal, setShowProjectModal] = useState(false); 
+  const [showConnectModal, setShowConnectModal] = useState(false);
 
   const handleThemeToggle = (isDarkTheme) => {
     setDarkTheme(isDarkTheme);
@@ -25,6 +27,7 @@ const Home = () => {
 
   const closeModal = () => setShowAboutModal(false);
   const closeProjectModal = () => setShowProjectModal(false);
+  const closeConnectModal = () => setShowConnectModal(false);
 
   return (
     <div
@@ -85,6 +88,7 @@ const Home = () => {
           darkTheme={darkTheme}
           onAboutClick={() => setShowAboutModal(true)}
           onProjectClick={() => setShowProjectModal(true)}
+          onConnectClick={()=> setShowConnectModal(true)}
         />
       </motion.div>
 
@@ -184,6 +188,52 @@ const Home = () => {
             {/* Close Button */}
             <button
               onClick={closeProjectModal}
+              className="absolute top-4 right-4 w-10 h-10 flex items-center justify-center rounded-full bg-red-600 text-white transition-transform duration-300 hover:scale-110"
+            >
+              &times;
+            </button>
+          </motion.div>
+        </Box>
+      </Modal>
+
+      {/* Modal for Connect */}
+      <Modal
+        open={showConnectModal}
+        onClose={closeConnectModal}
+        aria-labelledby="connect-modal"
+        aria-describedby="connect modal details"
+        closeAfterTransition
+        BackdropProps={{
+          timeout: 500,
+        }}
+      >
+        <Box
+          sx={{
+            position: 'fixed',
+            top: '50%',
+            left: '50%',
+            transform: 'translate(-50%, -50%)',
+            bgcolor: 'rgba(255, 255, 255, 0.6)',
+            boxShadow: 24,
+            borderRadius: '10px',
+            width: '90%',
+            maxWidth: '600px',
+            height: 'auto',
+            overflowY: 'auto',
+            p: 0,
+            m: 0,
+          }}
+        >
+          <motion.div
+            initial={{ y: -100, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.5, ease: 'easeInOut' }}
+            className="flex flex-col justify-center items-center p-4 bg-transparent"
+          >
+            <ConnectWithMe darkTheme={darkTheme} /> 
+            {/* Close Button */}
+            <button
+              onClick={closeConnectModal}
               className="absolute top-4 right-4 w-10 h-10 flex items-center justify-center rounded-full bg-red-600 text-white transition-transform duration-300 hover:scale-110"
             >
               &times;

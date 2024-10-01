@@ -1,8 +1,10 @@
 import React from 'react';
 import { GitHub } from '@mui/icons-material'; // Import the GitHub icon
 import { motion } from 'framer-motion'; // Optional: You can add framer-motion for animations
+import { useNavigate } from 'react-router-dom';
 
 const RecentProjectCompleted = ({ darkTheme }) => {
+    const navigate = useNavigate();
   return (
     <div className={`${darkTheme ? 'bg-gray-900 text-white' : 'bg-white text-gray-900'} rounded-lg shadow-xl p-6 w-full lg:w-3/4 mx-auto mt-10 border border-gray-700`}>
       {/* First Line: Green button with "Working" and GitHub icon */}
@@ -69,7 +71,7 @@ const RecentProjectCompleted = ({ darkTheme }) => {
 
       {/* Technology Buttons */}
       <div className="flex flex-wrap justify-center mt-4">
-        {['React', 'Node.js', 'Express', 'MongoDB', 'Socket.io', 'WebRTC', 'MUI Icons'].map((tech) => (
+        {['React', 'Node.js', 'Express.js', 'MongoDB', 'Socket.io', 'WebRTC(Peerjs)', 'MUI Icons'].map((tech) => (
           <button key={tech} className={`m-2 px-4 py-2 rounded-full border border-transparent bg-opacity-20 ${darkTheme ? 'bg-blue-600 text-white hover:bg-blue-500' : 'bg-blue-200 text-gray-900 hover:bg-blue-300'} transition duration-300`}>
             {tech}
           </button>
@@ -79,6 +81,7 @@ const RecentProjectCompleted = ({ darkTheme }) => {
       {/* More Projects Button */}
       <motion.button 
         className={`mt-6 px-6 py-3 rounded-full transition duration-300 ${darkTheme ? 'bg-gray-700 text-white hover:bg-gray-600' : 'bg-gray-200 text-gray-900 hover:bg-gray-300'} shadow-md ml-28`}
+        onClick={() => navigate('/projects')}
       >
         More Projects
       </motion.button>
