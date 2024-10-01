@@ -5,7 +5,7 @@ import { gsap } from 'gsap';
 // List of greetings in different languages
 const greetings = ['Hi', 'Ciao', 'Hola', 'Bonjour', 'Hallo', 'こんにちは', '안녕하세요'];
 
-const TypingHi = () => {
+const TypingHi = ({ darkTheme }) => {
   const [currentGreeting, setCurrentGreeting] = useState('');
   const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -40,9 +40,9 @@ const TypingHi = () => {
   }, [currentIndex]); // Re-run on greeting change
 
   return (
-    <div className="flex flex-col items-center justify-center bg-black p-8 rounded-lg">
+    <div className={`flex flex-col items-center justify-center p-8 rounded-lg ${darkTheme ? 'bg-black' : 'bg-white'}`}>
       {/* Typing greeting */}
-      <h1 className="text-5xl md:text-6xl font-extrabold text-white tracking-tight">
+      <h1 className={`text-5xl md:text-6xl font-extrabold ${darkTheme ? 'text-white' : 'text-black'} tracking-tight`}>
         {currentGreeting}
         <motion.span
           className="inline-block ml-4 text-5xl"

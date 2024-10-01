@@ -1,11 +1,11 @@
 import React, { useRef, useEffect } from 'react';
-import { motion } from 'framer-motion';
 import { gsap } from 'gsap';
 import { FaReact, FaNodeJs, FaPython, FaJava, FaGitAlt, FaDatabase } from 'react-icons/fa'; 
-import { SiTailwindcss, SiJavascript, SiTypescript, SiFlask, SiSocketdotio, SiWebrtc } from 'react-icons/si';
+import { SiTailwindcss, SiJavascript, SiTypescript, SiFlask, SiSocketdotio, SiWebrtc, SiFramer, SiMui } from 'react-icons/si';
+import { DiMongodb } from "react-icons/di";
 
 const skills = [
-  { name: 'MongoDB', icon: <FaDatabase /> },
+  { name: 'MongoDB', icon: <DiMongodb /> },
   { name: 'ReactJS', icon: <FaReact /> },
   { name: 'Node.js', icon: <FaNodeJs /> },
   { name: 'Python', icon: <FaPython /> },
@@ -18,51 +18,49 @@ const skills = [
   { name: 'Tailwind CSS', icon: <SiTailwindcss /> },
   { name: 'Socket.io', icon: <SiSocketdotio /> },
   { name: 'WebRTC', icon: <SiWebrtc /> },
+  { name: 'Framer-motion', icon: <SiFramer />},
+  { name: 'Material UI', icon: <SiMui />}
 ];
 
 const SkillsCarousel = () => {
   const carouselRef = useRef(null);
 
   useEffect(() => {
-    // GSAP for smooth looping transitions with ease and delay between transitions
-    const tl = gsap.timeline({ repeat: -1, defaults: { ease: 'power2.inOut', duration: 6 } });
+    const carousel = carouselRef.current;
+    const carouselWidth = carousel.scrollWidth;
 
-    tl.to(carouselRef.current, {
-      x: '-=100%',
-      onComplete: () => {
-        const firstChild = carouselRef.current.firstChild;
-        carouselRef.current.appendChild(firstChild); // Move first skill to the end
-        gsap.set(carouselRef.current, { x: '0%' }); // Reset position
+    // Clone the items to create a seamless scroll
+    const items = [...carousel.children];
+    items.forEach((item) => {
+      const clone = item.cloneNode(true);
+      carousel.appendChild(clone);
+    });
+
+    // GSAP infinite scrolling animation
+    gsap.to(carousel, {
+      x: `-${carouselWidth}px`,
+      duration: 30, // Increased duration for slower scrolling
+      ease: 'linear',
+      repeat: -1,
+      modifiers: {
+        x: (x) => `${parseFloat(x) % carouselWidth}px`, // Modifies the x position to create endless scrolling
       },
     });
   }, []);
 
   return (
-    <div className="overflow-hidden w-full bg-transparent p-4 relative mt-0">
-      <motion.div
-        ref={carouselRef}
-        className="flex space-x-6"
-        initial={{ x: 0 }}
-        animate={{ x: '-100%' }}
-        transition={{
-          duration: 20,
-          ease: "easeInOut",
-          repeat: Infinity,
-        }}
-      >
+    <div className="overflow-hidden w-full bg-transparent p-4 relative">
+      <div ref={carouselRef} className="flex space-x-6">
         {skills.map((skill, index) => (
-          <motion.div
+          <div
             key={index}
-            className="flex items-center justify-center bg-white text-black rounded-lg p-6 shadow-lg 
-            transition-transform duration-500 hover:bg-gray-200 hover:scale-105"
-            whileHover={{ scale: 1.1 }}
-            transition={{ duration: 0.4 }}
+            className="flex items-center justify-center bg-white text-black rounded-lg p-6 shadow-lg transition-transform duration-500 hover:bg-gray-200 hover:scale-105"
           >
             <span className="text-3xl mr-3">{skill.icon}</span>
             <span className="text-lg font-semibold">{skill.name}</span>
-          </motion.div>
+          </div>
         ))}
-      </motion.div>
+      </div>
     </div>
   );
 };

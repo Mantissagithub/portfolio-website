@@ -2,9 +2,9 @@ import React from 'react';
 import { GitHub } from '@mui/icons-material'; // Import the GitHub icon
 import { motion } from 'framer-motion'; // Optional: You can add framer-motion for animations
 
-const CurrentProject = () => {
+const CurrentProject = ({ darkTheme }) => {
   return (
-    <div className="bg-white rounded-lg shadow-lg p-6 w-full lg:w-3/4 mx-auto mt-10 border-gray-700">
+    <div className={`${darkTheme ? 'bg-white text-black' : 'bg-gray-800 text-white'} rounded-lg shadow-lg p-6 w-full lg:w-3/4 mx-auto mt-10 border-gray-700`}>
       {/* First Line: Green button with "Working" and GitHub icon */}
       <div className="flex justify-between items-center mb-4">
         {/* Left Side: Green Button and Text */}
@@ -26,18 +26,18 @@ const CurrentProject = () => {
               repeatType: "reverse",
             }}
           />
-          <span className="text-gray-700 font-semibold">Working</span>
+          <span className={`${darkTheme ? 'text-gray-700' : 'text-gray-300'} font-semibold`}>Working</span>
         </motion.div>
 
         {/* Right Side: GitHub Link with Icon */}
         <motion.div
-          className="text-gray-500"
+          className={`${darkTheme ? 'text-gray-500' : 'text-gray-400'}`}
           initial={{ opacity: 0, scale: 0.5 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.5 }}
         >
           <a
-            href="https://github.com/yourusername/yourproject" // Replace with your GitHub project URL
+            href="https://github.com/Mantissagithub/NoCode-Sensei1" // Replace with your GitHub project URL
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center text-blue-600"
@@ -49,7 +49,7 @@ const CurrentProject = () => {
 
       {/* Second Line: Project Heading */}
       <motion.h2
-        className="text-2xl font-bold text-gray-800 mb-2"
+        className="text-2xl font-bold mb-2"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
@@ -59,7 +59,7 @@ const CurrentProject = () => {
 
       {/* Description */}
       <motion.p
-        className="text-gray-600 text-base"
+        className={`text-base ${darkTheme ? 'text-gray-600' : 'text-gray-300'}`}
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1 }}

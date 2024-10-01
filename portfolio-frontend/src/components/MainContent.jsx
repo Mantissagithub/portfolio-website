@@ -1,15 +1,15 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
 import ReactTypingEffect from 'react-typing-effect';
 import CurrentProject from './CurrentProject'; // Import the CurrentProject component
 
-const MainContent = () => {
+const MainContent = ({ darkTheme }) => {
   const titles = ['Full Stack Developer', 'ML Beginner', 'ROS Beginner']; // Titles to animate
 
   return (
-    <div className="flex justify-center items-center bg-transparent p-6"> {/* Added gradient background */}
+    <div className={`flex justify-center items-center p-6 bg-transparent`}> {/* Background color based on theme */}
       {/* Main Card */}
-      <div className="bg-white rounded-2xl shadow-xl w-full lg:w-3/4 flex flex-col md:flex-row p-8"> {/* Increased padding and width */}
+      <div className={`rounded-2xl shadow-xl w-full lg:w-3/4 flex flex-col md:flex-row p-8 ${darkTheme ? 'bg-gray-800' : 'bg-white'}`}> {/* Card background based on theme */}
         
         {/* Left Section: Avatar and Name */}
         <motion.div
@@ -28,11 +28,11 @@ const MainContent = () => {
           </div>
 
           {/* Name */}
-          <h2 className="text-xl font-bold text-gray-700">Pradheep P</h2>
+          <h2 className={`text-xl font-bold ${darkTheme ? 'text-white' : 'text-gray-700'}`}>Pradheep P</h2>
 
           {/* Animated Title with Typing Effect */}
           <motion.div
-            className="title text-lg font-medium text-gray-500 mt-2"
+            className={`title text-lg font-medium mt-2 ${darkTheme ? 'text-gray-300' : 'text-gray-500'}`}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
           >
@@ -55,16 +55,7 @@ const MainContent = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1 }}
           >
-            <CurrentProject /> {/* Replace the previous card with the CurrentProject component */}
-
-            {/* Contribution Section: Text Input with Placeholder */}
-            <div className="mt-6 text-center text-black">
-              <input
-                type="text"
-                className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-400 bg-gray-300"
-                placeholder="Feel free to contribute or give any suggestions!"
-              />
-            </div>
+            <CurrentProject darkTheme={darkTheme} /> {/* Replace the previous card with the CurrentProject component */}
           </motion.div>
         </div>
       </div>
