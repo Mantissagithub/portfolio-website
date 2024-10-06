@@ -4,12 +4,16 @@ import ReactTypingEffect from 'react-typing-effect';
 import CurrentProject from './CurrentProject'; // Import the CurrentProject component
 
 const MainContent = ({ darkTheme }) => {
-  const titles = ['Full Stack Developer', 'ML Beginner', 'ROS Beginner']; // Titles to animate
+  const titles = [
+    'MERN Stack Developer', 
+    'Emerging Machine Learning Enthusiast', 
+    'ROS2 Developer in Training', 
+  ];
 
   return (
     <div className={`flex justify-center items-center p-6 bg-transparent`}> {/* Background color based on theme */}
       {/* Main Card */}
-      <div className={`rounded-2xl shadow-xl w-full lg:w-3/4 flex flex-col md:flex-row p-8 ${darkTheme ? 'bg-gray-800' : 'bg-white'}`}> {/* Card background based on theme */}
+      <div className={`rounded-2xl shadow-xl w-full lg:w-3/4 flex flex-col md:flex-row p-8 ${darkTheme ? 'bg-gray-900' : 'bg-gray-50'}`}> {/* Card background based on theme */}
         
         {/* Left Section: Avatar and Name */}
         <motion.div
@@ -19,7 +23,7 @@ const MainContent = ({ darkTheme }) => {
           transition={{ duration: 0.8 }}
         >
           {/* Avatar */}
-          <div className="rounded-full bg-gray-300 p-1 overflow-hidden shadow-lg mb-4">
+          <div className={`rounded-full ${darkTheme ? 'bg-gray-800' : 'bg-gray-300'} p-1 overflow-hidden shadow-lg mb-4`}>
             <img
               src="https://img.freepik.com/premium-photo/lego-figure-boy-with-glasses-shirt-that-says-hes_970933-5005.jpg?size=626&ext=jpg&ga=GA1.1.829029841.1727089904&semt=ais_hybrid"
               alt="Avatar"
@@ -28,11 +32,11 @@ const MainContent = ({ darkTheme }) => {
           </div>
 
           {/* Name */}
-          <h2 className={`text-xl font-bold ${darkTheme ? 'text-white' : 'text-gray-700'}`}>Pradheep P</h2>
+          <h2 className={`text-xl font-bold ${darkTheme ? 'text-white' : 'text-gray-800'}`}>Pradheep P</h2>
 
           {/* Animated Title with Typing Effect */}
           <motion.div
-            className={`title text-lg font-medium mt-2 ${darkTheme ? 'text-gray-300' : 'text-gray-500'}`}
+            className={`title text-lg font-medium mt-2 ${darkTheme ? 'text-gray-400' : 'text-gray-600'}`}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
           >
@@ -47,7 +51,7 @@ const MainContent = ({ darkTheme }) => {
           </motion.div>
         </motion.div>
 
-        {/* Right Section: Replace Card Content with CurrentProject */}
+        {/* Right Section: CurrentProject Component */}
         <div className="md:w-2/3 mt-6 md:mt-0 md:ml-6 flex flex-col justify-between">
           <motion.div
             className="flex-grow"

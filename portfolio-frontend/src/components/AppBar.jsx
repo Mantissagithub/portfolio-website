@@ -28,7 +28,7 @@ const AppBar = ({ onThemeToggle }) => {
 
   return (
     <motion.div
-      className={`w-full bg-black bg-opacity-70 backdrop-blur-md rounded-lg py-4 px-6 flex justify-between items-center shadow-xl border-b border-gray-800 transition-colors duration-300 ${
+      className={`w-full bg-black bg-opacity-70 backdrop-blur-md rounded-lg py-4 px-6 flex justify-between items-center shadow-xl border-gray-800 transition-colors duration-300 ${
         darkTheme
           ? 'bg-gradient-to-r from-gray-900 via-gray-800 to-gray-700 border-gray-600'
           : 'bg-gradient-to-r from-white via-gray-200 to-gray-300 border-gray-100'

@@ -5,6 +5,7 @@ import { SiTailwindcss, SiJavascript, SiTypescript, SiFlask, SiSocketdotio, SiWe
 import { DiMongodb } from "react-icons/di";
 import { RiNextjsLine } from "react-icons/ri";
 import { IoLogoFirebase } from "react-icons/io5";
+import { motion } from 'framer-motion';
 
 const skills = [
   { name: 'MongoDB', icon: <DiMongodb /> },
@@ -26,7 +27,6 @@ const skills = [
   { name: 'Material UI', icon: <SiMui />},
   { name: 'OpenCV', icon: <SiOpencv />},
   { name: 'Firebase', icon: <IoLogoFirebase />},
-  // { name: 'Material UI', icon: <SiMui />}
 ];
 
 const SkillsCarousel = () => {
@@ -56,16 +56,18 @@ const SkillsCarousel = () => {
   }, []);
 
   return (
-    <div className="overflow-hidden w-full bg-transparent p-4 relative">
-      <div ref={carouselRef} className="flex space-x-6">
+    <div className="overflow-hidden w-full bg-transparent p-4 relative shadow-lg rounded-lg">
+      <div ref={carouselRef} className="flex space-x-12 p-4">
         {skills.map((skill, index) => (
-          <div
+          <motion.div
             key={index}
-            className="flex items-center justify-center bg-white text-black rounded-lg p-6 shadow-lg transition-transform duration-500 hover:bg-gray-200 hover:scale-105"
+            className="flex items-center justify-center bg-white text-black rounded-lg p-8 shadow-md transition-transform duration-300 hover:bg-gray-200 hover:scale-105"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
           >
-            <span className="text-3xl mr-3">{skill.icon}</span>
+            <span className="text-4xl mr-3">{skill.icon}</span>
             <span className="text-lg font-semibold">{skill.name}</span>
-          </div>
+          </motion.div>
         ))}
       </div>
     </div>

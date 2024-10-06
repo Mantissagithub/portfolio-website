@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import AppBar from './AppBar';
 import MainContent from './MainContent';
 import TrafficLightNavigation from './TrafficLightNavigation';
-import TypingHi from './TypingHi';
+import MacStyleHi from './TypingHi';
 import SkillsCarousel from './SkillsCarousel';
 import SummarizedAboutMe from './SummarizedAboutMe';
 import RecentProjectCompleted from './RecentProjectCompleted';
@@ -31,18 +31,11 @@ const Home = () => {
 
   return (
     <div
-      className={`min-h-screen ${darkTheme ? 'text-white' : 'text-black'} flex flex-col items-center justify-center font-roboto`}
-      style={{
-        backgroundImage: darkTheme
-          ? "url('https://images.unsplash.com/photo-1503455637927-730bce8583c0?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8ZGFyayUyMGJhY2tncm91bmQlMjBwaXhlbGF0ZWR8ZW58MHx8MHx8fDA%3D')"
-          : "url('https://t4.ftcdn.net/jpg/05/32/28/59/360_F_532285934_qyYCy5BpdBGaM1DpL1SvlcvftOMuppCC.jpg')",
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-      }}
+      className={`min-h-screen ${darkTheme ? 'bg-[#2D004D] text-[#E0BBE4]' : 'bg-[#FFF8E7] text-[#2E2B5F]'} flex flex-col items-center justify-center font-poppins`}
     >
       {/* AppBar Component */}
       <div className="fixed top-0 left-0 w-full z-50 p-6">
-        <div className="appbar bg-transparent backdrop-blur-lg rounded-lg shadow-lg px-6 py-4 max-w-7xl mx-auto">
+        <div className={`appbar bg-transparent backdrop-blur-lg max-w-7xl mx-auto`}>
           <AppBar onThemeToggle={handleThemeToggle} />
         </div>
       </div>
@@ -53,16 +46,17 @@ const Home = () => {
           initial={{ opacity: 0, y: -50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1.2, ease: 'easeOut' }}
-          className="flex items-center bg-transparent"
+          className="flex items-center"
         >
-          <TypingHi darkTheme={darkTheme} />
+          <MacStyleHi darkTheme={darkTheme} />
           <motion.h1
             className="text-5xl font-bold ml-4"
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5, delay: 0.5 }}
+            style={{ fontFamily: "'Montserrat', sans-serif" }}
           >
-            Welcome to My Portfolio
+            Welcome to My Portfolio!
           </motion.h1>
         </motion.div>
       </div>
@@ -72,7 +66,7 @@ const Home = () => {
         initial={{ opacity: 0, scale: 0.8 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ delay: 0.2, duration: 1, ease: 'easeOut' }}
-        className="w-full max-w-6xl px-4 mt-10 mr-2"
+        className={`w-full max-w-6xl px-4 mt-10 bg-transparent`}
       >
         <MainContent darkTheme={darkTheme} />
       </motion.div>
@@ -88,7 +82,7 @@ const Home = () => {
           darkTheme={darkTheme}
           onAboutClick={() => setShowAboutModal(true)}
           onProjectClick={() => setShowProjectModal(true)}
-          onConnectClick={()=> setShowConnectModal(true)}
+          onConnectClick={() => setShowConnectModal(true)}
         />
       </motion.div>
 
@@ -121,7 +115,7 @@ const Home = () => {
             top: '50%',
             left: '50%',
             transform: 'translate(-50%, -50%)',
-            bgcolor : 'rgba(255, 255, 255, 0.6)',
+            bgcolor: darkTheme ? 'rgba(45, 0, 77, 0.95)' : 'rgba(255, 248, 231, 0.95)',
             boxShadow: 24,
             borderRadius: '10px',
             width: '90%',
@@ -136,7 +130,7 @@ const Home = () => {
             initial={{ y: -100, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.5, ease: 'easeInOut' }}
-            className="flex flex-col justify-center items-center p-4 bg-transparent"
+            className="flex flex-col justify-center items-center p-4"
           >
             <SummarizedAboutMe darkTheme={darkTheme} />
             {/* Close Button */}
@@ -167,7 +161,7 @@ const Home = () => {
             top: '50%',
             left: '50%',
             transform: 'translate(-50%, -50%)',
-            bgcolor: 'rgba(255, 255, 255, 0.6)',
+            bgcolor: darkTheme ? 'rgba(45, 0, 77, 0.95)' : 'rgba(255, 248, 231, 0.95)',
             boxShadow: 24,
             borderRadius: '10px',
             width: '90%',
@@ -182,7 +176,7 @@ const Home = () => {
             initial={{ y: -100, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.5, ease: 'easeInOut' }}
-            className="flex flex-col justify-center items-center p-4 bg-transparent"
+            className="flex flex-col justify-center items-center p-4"
           >
             <RecentProjectCompleted darkTheme={darkTheme} /> 
             {/* Close Button */}
@@ -201,7 +195,7 @@ const Home = () => {
         open={showConnectModal}
         onClose={closeConnectModal}
         aria-labelledby="connect-modal"
-        aria-describedby="connect modal details"
+        aria-describedby="modal-connect-me"
         closeAfterTransition
         BackdropProps={{
           timeout: 500,
@@ -213,7 +207,7 @@ const Home = () => {
             top: '50%',
             left: '50%',
             transform: 'translate(-50%, -50%)',
-            bgcolor: 'rgba(255, 255, 255, 0.6)',
+            bgcolor: darkTheme ? 'rgba(45, 0, 77, 0.95)' : 'rgba(255, 248, 231, 0.95)',
             boxShadow: 24,
             borderRadius: '10px',
             width: '90%',
@@ -228,9 +222,9 @@ const Home = () => {
             initial={{ y: -100, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.5, ease: 'easeInOut' }}
-            className="flex flex-col justify-center items-center p-4 bg-transparent"
+            className="flex flex-col justify-center items-center p-4"
           >
-            <ConnectWithMe darkTheme={darkTheme} /> 
+            <ConnectWithMe darkTheme={darkTheme} />
             {/* Close Button */}
             <button
               onClick={closeConnectModal}

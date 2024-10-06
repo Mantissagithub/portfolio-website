@@ -22,7 +22,9 @@ const MultiModalEmotionRecognitionProject = ({ darkTheme }) => {
 
   return (
     <motion.div
-      className={`p-6 rounded-lg shadow-md mb-8 transition-transform transform hover:scale-105 ${darkTheme ? 'bg-gray-800 text-white' : 'bg-white text-gray-800'}`}
+      className={`p-6 rounded-lg shadow-lg mb-8 transition-transform transform hover:scale-105 ${
+        darkTheme ? 'bg-[#400060] text-[#E0BBE4]' : 'bg-[#FFF8E7] text-[#4B0082]'
+      }`}
       whileHover={{ scale: 1.02 }}
       onMouseEnter={handleHover}
       onMouseLeave={handleHoverOut}
@@ -43,11 +45,25 @@ const MultiModalEmotionRecognitionProject = ({ darkTheme }) => {
         This application allows users to analyze emotions from videos using state-of-the-art models for both audio and visual content. You can upload videos (maximum length of 2 minutes) to extract emotions from both speech and facial expressions in real-time. The app employs OpenAI's Whisper model for audio emotion detection and Cardiff NLP's RoBERTa model for emotion recognition in text, alongside Salesforce's BLIP model for visual analysis. Users can easily upload video files, and the app will analyze both audio and visual components to display emotions in real-time. The models have been meticulously selected to ensure optimal performance for this multimodal emotion recognition task.
       </p>
 
+      {/* Expert Level */}
+      <div className="mb-4">
+        <span
+          className={`inline-block px-4 py-2 rounded-full text-sm font-semibold ${
+            darkTheme ? 'bg-purple-600 text-white' : 'bg-purple-200 text-[#2E2B5F]'
+          }`}
+        >
+          Expert Level: Advanced
+        </span>
+      </div>
+
+      {/* Technology Stack */}
       <div className="flex flex-wrap gap-2">
         {['OpenAI Whisper', 'Cardiff NLP RoBERTa', 'Salesforce BLIP', 'J-Hartmann DistilRoBERTa'].map((tool) => (
           <span
             key={tool}
-            className={`text-sm m-2 px-4 py-2 rounded-full border border-transparent bg-opacity-20 ${darkTheme ? 'bg-blue-600 text-white hover:bg-blue-500' : 'bg-blue-200 text-gray-900 hover:bg-blue-300'} transition duration-300`}
+            className={`text-sm m-2 px-4 py-2 rounded-full border border-transparent bg-opacity-20 ${
+              darkTheme ? 'bg-purple-500 text-white hover:bg-purple-400' : 'bg-blue-200 text-[#2E2B5F] hover:bg-blue-300'
+            } transition duration-300`}
           >
             {tool}
           </span>
@@ -55,7 +71,7 @@ const MultiModalEmotionRecognitionProject = ({ darkTheme }) => {
       </div>
 
       {/* Updated Research Papers Section */}
-      <div className="mt-6">
+      {/* <div className="mt-6">
         <p className="text-lg font-semibold mb-2">Research Papers:</p>
         <ul className="list-inside list-disc space-y-2 text-sm">
           <li>
@@ -99,7 +115,7 @@ const MultiModalEmotionRecognitionProject = ({ darkTheme }) => {
             </a>
           </li>
         </ul>
-      </div>
+      </div> */}
     </motion.div>
   );
 };

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import ChatSphereProject from './ChatSphereProject';
 import { FaMoon, FaSun } from 'react-icons/fa';
 import MultiModalEmotionRecognitionProject from './MultiModalEmotionRecognition';
@@ -23,38 +23,36 @@ const Projects = () => {
     document.documentElement.classList.toggle('dark');
   };
 
-  // GSAP Fade-in animation for each project on mount
-  const fadeIn = (element) => {
-    gsap.from(element, {
+  useEffect(() => {
+    gsap.from(".project-item", {
       opacity: 0,
       y: 20,
       duration: 1.2,
-      ease: 'power3.out',
-      stagger: 0.3
+      stagger: 0.2,
+      ease: 'power1.out',
+      clearProps: 'all',
     });
-  };
+  }, []);
 
-  // Function to navigate back to home
   const handleBackToHome = () => {
     window.location.href = '/'; // Adjust this path as necessary
   };
 
   return (
     <div
-      className={`min-h-screen ${darkTheme ? 'text-white' : 'text-black'} flex flex-col items-center justify-center font-roboto`}
+      className={`min-h-screen ${
+        darkTheme ? 'text-[#E0BBE4]' : 'text-[#4B0082]'
+      } flex flex-col items-center justify-center font-roboto transition-all duration-500`}
       style={{
-        backgroundImage: darkTheme
-          ? "url('https://images.unsplash.com/photo-1503455637927-730bce8583c0?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8ZGFyayUyMGJhY2tncm91bmQlMjBwaXhlbGF0ZWR8ZW58MHx8MHx8fDA%3D')"
-          : "url('https://t4.ftcdn.net/jpg/05/32/28/59/360_F_532285934_qyYCy5BpdBGaM1DpL1SvlcvftOMuppCC.jpg')",
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        transition: 'background 0.5s ease',
+        backgroundColor: darkTheme ? '#2D004D' : '#FFF8E7',
       }}
     >
       {/* Back to Home Button */}
       <button
         onClick={handleBackToHome}
-        className="fixed top-4 left-4 p-2 bg-gray-800 text-white rounded-full shadow-lg hover:bg-gray-600 transition duration-300"
+        className={`fixed top-4 left-4 p-2 rounded-full shadow-lg transition duration-300 ${
+          darkTheme ? 'bg-[#A971FF] text-[#F7E7F0] hover:bg-[#A971FF]/80' : 'bg-[#9B5DE5] text-white hover:bg-[#9B5DE5]/80'
+        }`}
       >
         Back to Home
       </button>
@@ -66,48 +64,82 @@ const Projects = () => {
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.8, ease: 'easeOut' }}
       >
-        <h1 className={`text-6xl font-bold tracking-tight bg-clip-text text-black`}>
+        <h1
+          className={`text-6xl font-bold tracking-tight ${
+            darkTheme ? 'text-[#F7E7F0]' : 'text-[#4B0082]'
+          }`}
+        >
           PROJECTS
         </h1>
 
         {/* Theme Toggle Button */}
         <button
           onClick={toggleTheme}
-          className="text-3xl p-4 rounded-full bg-gray-800 dark:bg-white hover:shadow-lg transition-all duration-300"
+          className={`text-3xl p-4 rounded-full transition-all duration-300 ${
+            darkTheme ? 'bg-[#A971FF] text-[#F7E7F0]' : 'bg-[#FFF3DF] text-[#4B0082] hover:bg-[#9B5DE5]/80'
+          }`}
         >
           {darkTheme ? (
-            <FaSun className="text-yellow-400" />
+            <FaSun className="text-[#F7E7F0]" />
           ) : (
-            <FaMoon className="text-gray-800" />
+            <FaMoon className="text-[#4B0082]" />
           )}
         </button>
       </motion.div>
 
       {/* Separator Line */}
       <motion.hr
-        className={`w-full max-w-4xl border-t ${darkTheme ? 'border-gray-700' : 'border-gray-400'} mb-10`}
+        className={`w-full max-w-4xl mb-10 border-t transition-all duration-500 ${
+          darkTheme ? 'border-[#400060]' : 'border-[#9B5DE5]'
+        }`}
         initial={{ width: 0 }}
         animate={{ width: '100%' }}
         transition={{ duration: 0.8 }}
       />
 
-      {/* Project List */}
+      {/* Project Flex Container */}
       <motion.div
-        className="space-y-12 w-full max-w-7xl px-6 mb-6"
-        ref={fadeIn}
+        className="flex flex-wrap justify-start w-full max-w-7xl px-6 mb-6"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.5, ease: 'easeIn' }}
       >
-        <ChatSphereProject darkTheme={darkTheme} />
-        <MultiModalEmotionRecognitionProject darkTheme={darkTheme} />
-        <GestureRecognitionProject darkTheme={darkTheme} />
-        <SpeechToTextProject darkTheme={darkTheme} />
-        <YoloObjectDetectionProject darkTheme={darkTheme} />
-        <CourseSellingAppProject darkTheme={darkTheme} />
-        <MicrogradProject darkTheme={darkTheme} />
-        <VyadhTeamWebsite darkTheme={darkTheme} />
-        <PanoramicImageStitchingProject darkTheme={darkTheme} />
-        <KVCacheProject darkTheme={darkTheme} />
-        <CreditCardCheckoutForm darkTheme={darkTheme} />
-        <TodoAppProject darkTheme={darkTheme} />
+        <div className="project-item w-full md:w-1/2 lg:w-1/3 p-4">
+          <ChatSphereProject darkTheme={darkTheme} />
+        </div>
+        <div className="project-item w-full md:w-1/2 lg:w-1/3 p-4">
+          <MultiModalEmotionRecognitionProject darkTheme={darkTheme} />
+        </div>
+        <div className="project-item w-full md:w-1/2 lg:w-1/3 p-4">
+          <GestureRecognitionProject darkTheme={darkTheme} />
+        </div>
+        <div className="project-item w-full md:w-1/2 lg:w-1/3 p-4">
+          <SpeechToTextProject darkTheme={darkTheme} />
+        </div>
+        <div className="project-item w-full md:w-1/2 lg:w-1/3 p-4">
+          <YoloObjectDetectionProject darkTheme={darkTheme} />
+        </div>
+        <div className="project-item w-full md:w-1/2 lg:w-1/3 p-4">
+          <CourseSellingAppProject darkTheme={darkTheme} />
+        </div>
+        <div className="project-item w-full md:w-1/2 lg:w-1/3 p-4">
+          <MicrogradProject darkTheme={darkTheme} />
+        </div>
+        <div className="project-item w-full md:w-1/2 lg:w-1/3 p-4">
+          <VyadhTeamWebsite darkTheme={darkTheme} />
+        </div>
+        <div className="project-item w-full md:w-1/2 lg:w-1/3 p-4">
+          <PanoramicImageStitchingProject darkTheme={darkTheme} />
+        </div>
+        <div className="project-item w-full md:w-1/2 lg:w-1/3 p-4">
+          <KVCacheProject darkTheme={darkTheme} />
+        </div>
+        <div className="project-item w-full md:w-1/2 lg:w-1/3 p-4">
+          <CreditCardCheckoutForm darkTheme={darkTheme} />
+        </div>
+        <div className="project-item w-full md:w-1/2 lg:w-1/3 p-4">
+          <TodoAppProject darkTheme={darkTheme} />
+        </div>
       </motion.div>
     </div>
   );
