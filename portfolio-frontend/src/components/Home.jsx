@@ -10,12 +10,14 @@ import ConnectWithMe from './ContactForm';
 import { gsap } from 'gsap';
 import { motion } from 'framer-motion';
 import { Box, Modal } from '@mui/material';
+import MenuIcon from '@mui/icons-material/Menu';
 
 const Home = () => {
   const [darkTheme, setDarkTheme] = useState(false);
   const [showAboutModal, setShowAboutModal] = useState(false); 
   const [showProjectModal, setShowProjectModal] = useState(false); 
   const [showConnectModal, setShowConnectModal] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const handleThemeToggle = (isDarkTheme) => {
     setDarkTheme(isDarkTheme);
@@ -30,211 +32,140 @@ const Home = () => {
   const closeConnectModal = () => setShowConnectModal(false);
 
   return (
-    <div
-      className={`min-h-screen ${darkTheme ? 'bg-[#2D004D] text-[#E0BBE4]' : 'bg-[#FFF8E7] text-[#2E2B5F]'} flex flex-col items-center justify-center font-poppins`}
-    >
-      {/* AppBar Component */}
-      <div className="fixed top-0 left-0 w-full z-50 p-6">
+    <div className={`min-h-screen ${darkTheme ? 'bg-[#2D004D] text-[#E0BBE4]' : 'bg-[#FFF8E7] text-[#2E2B5F]'} flex flex-col font-poppins`}>
+      {/* Fixed AppBar */}
+      <header className="fixed top-0 left-0 w-full z-50 p-6">
         <div className={`appbar bg-transparent backdrop-blur-lg max-w-7xl mx-auto`}>
           <AppBar onThemeToggle={handleThemeToggle} />
         </div>
+      </header>
+      <br />
+      <br />
+
+      {/* Mobile Menu Button */}
+      <div className="lg:hidden fixed top-4 right-4 z-50">
+        <button onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} className="p-2 bg-[#2E2B5F] text-white rounded-full flex items-center justify-center hover:bg-[#6C5B7B]">
+          <MenuIcon />
+        </button>
       </div>
 
+      {/* Mobile Menu */}
+      {isMobileMenuOpen && (
+        <motion.div 
+          initial={{ opacity: 0, x: 100 }} 
+          animate={{ opacity: 1, x: 0 }} 
+          transition={{ duration: 0.5 }}
+          className="fixed top-16 right-0 bg-transparent p-6 rounded-lg z-50"
+        >
+          <TrafficLightNavigation 
+            darkTheme={darkTheme} 
+            onAboutClick={() => {
+              setShowAboutModal(true);
+              setIsMobileMenuOpen(false);
+            }} 
+            onProjectClick={() => {
+              setShowProjectModal(true);
+              setIsMobileMenuOpen(false);
+            }} 
+            onConnectClick={() => {
+              setShowConnectModal(true);
+              setIsMobileMenuOpen(false);
+            }} 
+          />
+        </motion.div>
+      )}
+
       {/* Hero Section */}
-      <div className="flex flex-col items-center justify-center mt-5 space-y-4">
-        <motion.div
-          initial={{ opacity: 0, y: -50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1.2, ease: 'easeOut' }}
+      <main className="flex flex-col items-center justify-center mt-20 space-y-4 px-6">
+        <motion.div 
+          initial={{ opacity: 0, y: -50 }} 
+          animate={{ opacity: 1, y: 0 }} 
+          transition={{ duration: 1.2, ease: 'easeOut' }} 
           className="flex items-center"
         >
           <MacStyleHi darkTheme={darkTheme} />
-          <motion.h1
-            className="text-5xl font-bold ml-4"
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
+          <motion.h1 
+            className="text-3xl md:text-4xl lg:text-5xl font-bold ml-4" 
+            initial={{ opacity: 0, scale: 0.8 }} 
+            animate={{ opacity: 1, scale: 1 }} 
             transition={{ duration: 0.5, delay: 0.5 }}
-            style={{ fontFamily: "'Montserrat', sans-serif" }}
           >
             Welcome to My Portfolio!
           </motion.h1>
         </motion.div>
-      </div>
 
-      {/* Main Content */}
-      <motion.div
-        initial={{ opacity: 0, scale: 0.8 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ delay: 0.2, duration: 1, ease: 'easeOut' }}
-        className={`w-full max-w-6xl px-4 mt-10 bg-transparent`}
-      >
-        <MainContent darkTheme={darkTheme} />
-      </motion.div>
-
-      {/* Side Navigation */}
-      <motion.div
-        initial={{ opacity: 0, x: 100 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ delay: 1, duration: 1, ease: 'easeOut' }}
-        className="fixed top-1/2 right-8 transform -translate-y-1/2 mr-14 mb-13"
-      >
-        <TrafficLightNavigation
-          darkTheme={darkTheme}
-          onAboutClick={() => setShowAboutModal(true)}
-          onProjectClick={() => setShowProjectModal(true)}
-          onConnectClick={() => setShowConnectModal(true)}
-        />
-      </motion.div>
-
-      {/* Skills Carousel */}
-      <div className="fixed bottom-0 left-0 w-full">
-        <motion.div
-          initial={{ opacity: 0, y: 100 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1.5, duration: 1, ease: 'easeOut' }}
-          className="w-full px-6"
-        >
-          <SkillsCarousel />
-        </motion.div>
-      </div>
-
-      {/* Modal for About Me */}
-      <Modal
-        open={showAboutModal}
-        onClose={closeModal}
-        aria-labelledby="about-modal"
-        aria-describedby="modal-about-me"
-        closeAfterTransition
-        BackdropProps={{
-          timeout: 500,
-        }}
-      >
-        <Box
-          sx={{
-            position: 'fixed',
-            top: '50%',
-            left: '50%',
-            transform: 'translate(-50%, -50%)',
-            bgcolor: darkTheme ? 'rgba(45, 0, 77, 0.95)' : 'rgba(255, 248, 231, 0.95)',
-            boxShadow: 24,
-            borderRadius: '10px',
-            width: '90%',
-            maxWidth: '600px',
-            height: 'auto',
-            overflowY: 'auto',
-            p: 0,
-            m: 0,
-          }}
-        >
-          <motion.div
-            initial={{ y: -100, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.5, ease: 'easeInOut' }}
-            className="flex flex-col justify-center items-center p-4"
+        {/* Main Content */}
+        <section className="w-full max-w-6xl px-4 mt-10 md:mt-20  mb-0bg-transparent">
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.8 }} 
+            animate={{ opacity: 1, scale: 1 }} 
+            transition={{ delay: 0.2, duration: 1, ease: 'easeOut' }} 
           >
-            <SummarizedAboutMe darkTheme={darkTheme} />
-            {/* Close Button */}
-            <button
-              onClick={closeModal}
-              className="absolute top-4 right-4 w-10 h-10 flex items-center justify-center rounded-full bg-red-600 text-white transition-transform duration-300 hover:scale-110"
-            >
-              &times;
-            </button>
+            <MainContent darkTheme={darkTheme} />
           </motion.div>
-        </Box>
-      </Modal>
+        </section>
 
-      {/* Modal for Projects */}
-      <Modal
-        open={showProjectModal}
-        onClose={closeProjectModal}
-        aria-labelledby="project-modal"
-        aria-describedby="modal-project-details"
-        closeAfterTransition
-        BackdropProps={{
-          timeout: 500,
-        }}
-      >
-        <Box
-          sx={{
-            position: 'fixed',
-            top: '50%',
-            left: '50%',
-            transform: 'translate(-50%, -50%)',
-            bgcolor: darkTheme ? 'rgba(45, 0, 77, 0.95)' : 'rgba(255, 248, 231, 0.95)',
-            boxShadow: 24,
-            borderRadius: '10px',
-            width: '90%',
-            maxWidth: '600px',
-            height: 'auto',
-            overflowY: 'auto',
-            p: 0,
-            m: 0,
-          }}
-        >
-          <motion.div
-            initial={{ y: -100, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.5, ease: 'easeInOut' }}
-            className="flex flex-col justify-center items-center p-4"
+        {/* Skills Carousel */}
+        <section className="w-full max-w-8xl px-6 mt-10 mb-16">
+          <motion.div 
+            initial={{ opacity: 0, y: 100 }} 
+            animate={{ opacity: 1, y: 0 }} 
+            transition={{ delay: 1.5, duration: 1, ease: 'easeOut' }}
           >
-            <RecentProjectCompleted darkTheme={darkTheme} /> 
-            {/* Close Button */}
-            <button
-              onClick={closeProjectModal}
-              className="absolute top-4 right-4 w-10 h-10 flex items-center justify-center rounded-full bg-red-600 text-white transition-transform duration-300 hover:scale-110"
-            >
-              &times;
-            </button>
+            <SkillsCarousel />
           </motion.div>
-        </Box>
-      </Modal>
+        </section>
+      </main>
 
-      {/* Modal for Connect */}
-      <Modal
-        open={showConnectModal}
-        onClose={closeConnectModal}
-        aria-labelledby="connect-modal"
-        aria-describedby="modal-connect-me"
-        closeAfterTransition
-        BackdropProps={{
-          timeout: 500,
-        }}
-      >
-        <Box
-          sx={{
-            position: 'fixed',
-            top: '50%',
-            left: '50%',
-            transform: 'translate(-50%, -50%)',
-            bgcolor: darkTheme ? 'rgba(45, 0, 77, 0.95)' : 'rgba(255, 248, 231, 0.95)',
-            boxShadow: 24,
-            borderRadius: '10px',
-            width: '90%',
-            maxWidth: '600px',
-            height: 'auto',
-            overflowY: 'auto',
-            p: 0,
-            m: 0,
-          }}
-        >
-          <motion.div
-            initial={{ y: -100, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.5, ease: 'easeInOut' }}
-            className="flex flex-col justify-center items-center p-4"
-          >
-            <ConnectWithMe darkTheme={darkTheme} />
-            {/* Close Button */}
-            <button
-              onClick={closeConnectModal}
-              className="absolute top-4 right-4 w-10 h-10 flex items-center justify-center rounded-full bg-red-600 text-white transition-transform duration-300 hover:scale-110"
-            >
-              &times;
-            </button>
-          </motion.div>
-        </Box>
-      </Modal>
+      {/* Side Navigation (hidden on small screens) */}
+<motion.div 
+  initial={{ opacity: 0, x: 100 }} 
+  animate={{ opacity: 1, x: 0 }} 
+  transition={{ delay: 1, duration: 1, ease: 'easeOut' }} 
+  className="hidden lg:block fixed right-8 top-1/2 transform -translate-y-1/2 z-50"
+>
+  <TrafficLightNavigation 
+    darkTheme={darkTheme} 
+    onAboutClick={() => setShowAboutModal(true)} 
+    onProjectClick={() => setShowProjectModal(true)} 
+    onConnectClick={() => setShowConnectModal(true)} 
+  />
+</motion.div>
+      {/* Modals */}
+      {[{
+        openState: showAboutModal,
+        closeFunc: closeModal,
+        contentComponent: <SummarizedAboutMe darkTheme={darkTheme} />,
+      }, {
+        openState: showProjectModal,
+        closeFunc: closeProjectModal,
+        contentComponent: <RecentProjectCompleted darkTheme={darkTheme} />,
+      }, {
+        openState: showConnectModal,
+        closeFunc: closeConnectModal,
+        contentComponent: <ConnectWithMe />,
+      }].map((modalData) => (
+        <Modal key={modalData.contentComponent.type.name} open={modalData.openState} onClose={modalData.closeFunc} closeAfterTransition BackdropProps={{ timeout: 500 }}>
+          <Box sx={{
+              position: 'fixed',
+              top: '50%',
+              left: '50%',
+              transform: 'translate(-50%,-50%)',
+              bgcolor: darkTheme ? 'rgba(45 ,0 ,77 ,0.95)' : 'rgba(255,248,231 ,0.95)',
+              boxShadow: 24,
+              borderRadius: '10px',
+              width: '90%',
+              maxWidth: '600px',
+              overflowY: 'auto',
+              p: '0'
+            }}>
+            <motion.div initial={{ y: -100, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ duration: 0.5, ease: 'easeInOut' }} className="flex flex-col justify-center items-center p-4">
+              {modalData.contentComponent}
+              <button onClick={modalData.closeFunc} className="absolute top-4 right-4 w-10 h-10 flex items-center justify-center rounded-full bg-red-600 text-white hover:bg-red-700">&times;</button>
+            </motion.div>
+          </Box>
+        </Modal>
+      ))}
     </div>
   );
 };

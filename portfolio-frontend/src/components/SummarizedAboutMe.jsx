@@ -34,8 +34,8 @@ const SummarizedAboutMe = ({ darkTheme }) => {
       >
         <div className="relative rounded-lg bg-gradient-to-r from-indigo-600 to-blue-600 shadow-lg p-4">
           {/* Top Section */}
-          <div className={`flex justify-between items-center px-4 py-2 ${darkTheme ? 'bg-gray-800' : 'bg-white'} rounded-t-lg border-b border-dashed ${darkTheme ? 'border-gray-700' : 'border-gray-300'}`}>
-            <div className="text-left">
+          <div className={`flex flex-col md:flex-row justify-between items-center px-4 py-2 ${darkTheme ? 'bg-gray-800' : 'bg-white'} rounded-t-lg border-b border-dashed ${darkTheme ? 'border-gray-700' : 'border-gray-300'}`}>
+            <div className="text-left mb-2 md:mb-0">
               <h2 className="text-xl font-bold">Boarding Pass</h2>
               <p className="text-sm">VIT University</p>
             </div>
@@ -46,15 +46,15 @@ const SummarizedAboutMe = ({ darkTheme }) => {
           </div>
 
           {/* Avatar and Introduction */}
-          <div className={`flex items-center ${darkTheme ? 'bg-gray-900' : 'bg-white'} p-4 border-b border-dashed ${darkTheme ? 'border-gray-700' : 'border-gray-300'} rounded-b-lg`}>
+          <div className={`flex flex-col md:flex-row items-center ${darkTheme ? 'bg-gray-900' : 'bg-white'} p-4 border-b border-dashed ${darkTheme ? 'border-gray-700' : 'border-gray-300'} rounded-b-lg`}>
             <img 
               src="https://img.freepik.com/premium-photo/child-with-black-curly-hair-white-lab-coat_978914-10549.jpg?w=826" 
               alt="Pradheep's Avatar" 
-              className="rounded-full w-24 h-24 mr-6 shadow-md"
+              className="rounded-full w-[50%] md:w-[24%] h-auto mr-6 shadow-md"
             />
             <div className="flex-grow text-left">
-              <h1 className="text-3xl font-extrabold mb-2">Hello, I'm Pradheep!</h1>
-              <p className="text-lg leading-relaxed">
+              <h1 className="text-2xl md:text-3xl font-extrabold mb-2">Hello, I'm Pradheep!</h1>
+              <p className="text-base md:text-lg leading-relaxed">
                 A passionate Computer Science student at VIT, I thrive on crafting innovative web solutions. My toolkit includes React, Python, and the latest technologies like ROS2 Humble.
               </p>
             </div>
@@ -62,15 +62,15 @@ const SummarizedAboutMe = ({ darkTheme }) => {
 
           {/* Skills Section */}
           <div className={`p-4 border-b border-dashed ${darkTheme ? 'border-gray-700' : 'border-gray-300'} rounded-b-lg text-black`}>
-            <h2 className="text-2xl font-bold mb-2">Technical Expertise</h2>
-            <p className="text-lg leading-relaxed mb-4">
+            <h2 className="text-xl md:text-2xl font-bold mb-2">Technical Expertise</h2>
+            <p className="text-base md:text-lg leading-relaxed mb-4">
               I specialize in full-stack web development (MERN Stack), machine learning (Transformers, NLP, NLU), and computer vision (OpenCV, YOLO). My mission? To tackle real-world challenges with scalable tech solutions.
             </p>
           </div>
 
           {/* Footer Section */}
-          <div className={`flex justify-between items-center ${darkTheme ? 'bg-gray-800' : 'bg-white'} p-4 rounded-b-lg`}>
-            <div className="flex items-center">
+          <div className={`flex flex-col md:flex-row justify-between items-center ${darkTheme ? 'bg-gray-800' : 'bg-white'} p-4 rounded-b-lg`}>
+            <div className="flex items-center mb-2 md:mb-0">
               <h3 className="font-semibold text-xl mr-2">Seat:</h3>
               <p className="text-lg">A1</p>
             </div>

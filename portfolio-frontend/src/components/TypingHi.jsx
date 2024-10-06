@@ -17,12 +17,6 @@ const greetings = [
   { text: 'Hallo', font: 'inherit' },
   { text: 'こんにちは', font: 'inherit' }, // Japanese
   { text: '안녕하세요', font: 'inherit' }, // Korean
-  // { text: 'नमस्ते', font: 'inherit' }, // Hindi
-  // { text: 'வணக்கம்', font: "'Noto Sans Tamil', sans-serif" }, // Tamil
-  // { text: 'സ്വാഗതം', font: "'Noto Sans Malayalam', sans-serif" }, // Malayalam
-  // { text: 'స్వాగతం', font: "'Noto Sans Telugu', sans-serif" }, // Telugu
-  // { text: 'ਸਤ ਸ੍ਰੀ ਅਕਾਲ', font: 'inherit' }, // Punjabi
-  // { text: 'আদাব', font: 'inherit' }, // Bengali
 ];
 
 const MacStyleHi = ({ darkTheme }) => {
@@ -36,10 +30,10 @@ const MacStyleHi = ({ darkTheme }) => {
       setCurrentGreeting(text);
       setCurrentFont(font);
 
-      // Change the greeting every 3 seconds
+      // Change the greeting every 4 seconds
       const timeoutId = setTimeout(() => {
         setCurrentIndex((prev) => (prev + 1) % greetings.length);
-      }, 3000);
+      }, 4000);
 
       return () => clearTimeout(timeoutId); // Cleanup timeout on unmount
     };
@@ -48,16 +42,27 @@ const MacStyleHi = ({ darkTheme }) => {
     changeGreeting();
   }, [currentIndex]);
 
-  // Framer Motion variants for the macOS-style fade-in text animation
-  const letterVariants = {
-    hidden: { opacity: 0, scale: 0.8 },
+  // Framer Motion variants for sliding and fading
+  const greetingVariants = {
+    hidden: { opacity: 0, y: 40, scale: 0.8, filter: "blur(10px)" },
     visible: {
       opacity: 1,
+      y: 0,
       scale: 1,
+      filter: "blur(0px)",
       transition: {
         type: 'spring',
-        stiffness: 100,
-        damping: 20,
+        stiffness: 80,
+        damping: 15,
+        duration: 1,
+      },
+    },
+    exit: {
+      opacity: 0,
+      scale: 0.8,
+      filter: "blur(10px)",
+      transition: {
+        duration: 0.8,
       },
     },
   };
@@ -75,26 +80,29 @@ const MacStyleHi = ({ darkTheme }) => {
   }, []);
 
   return (
-    <div className={`flex items-center justify-center p-8 rounded-lg ${darkTheme ? 'bg-white' : 'bg-black'}`}>
-      {/* macOS-style greeting animation */}
-      <motion.h1
-        className={`text-5xl md:text-6xl font-extrabold tracking-tight flex items-center`}
-        style={{ fontFamily: currentFont, color: darkTheme ? 'black' : 'white' }}
+    <div className={`flex items-center justify-center p-6 md:p-10 rounded-lg shadow-lg ${darkTheme ? 'bg-gray-100' : 'bg-gray-900'}`}>
+      <motion.div
+        key={currentGreeting} // Key ensures Framer Motion correctly transitions between greetings
         initial="hidden"
         animate="visible"
-        transition={{ staggerChildren: 0.08 }} // Similar to macOS's staggered effect
+        exit="exit"
+        variants={greetingVariants}
+        className="flex items-center"
       >
-        {currentGreeting.split("").map((char, index) => (
-          <motion.span key={index} variants={letterVariants}>
-            {char}
-          </motion.span>
-        ))}
-      </motion.h1>
+        {/* macOS-style greeting animation */}
+        <motion.h1
+          className={`text-4xl md:text-6xl font-bold tracking-tight`}
+          style={{ fontFamily: currentFont, color: darkTheme ? '#1a202c' : '#f7fafc' }}
+        >
+          {currentGreeting}
+        </motion.h1>
+      </motion.div>
 
       {/* Waving hand emoji */}
       <motion.span
-        className="inline-block ml-4 text-5xl wave-emoji"
+        className="inline-block ml-3 md:ml-5 text-4xl md:text-6xl wave-emoji"
         whileHover={{ scale: 1.2 }} // Subtle hover effect
+        style={{ filter: 'drop-shadow(2px 4px 6px rgba(0, 0, 0, 0.2))' }} // Subtle shadow for emoji
       >
         👋😊
       </motion.span>

@@ -1,6 +1,6 @@
 import React, { useRef, useEffect } from 'react';
 import { gsap } from 'gsap';
-import { FaReact, FaNodeJs, FaPython, FaJava, FaGitAlt, FaDatabase } from 'react-icons/fa'; 
+import { FaReact, FaNodeJs, FaPython, FaJava, FaGitAlt } from 'react-icons/fa'; 
 import { SiTailwindcss, SiJavascript, SiTypescript, SiFlask, SiSocketdotio, SiWebrtc, SiFramer, SiMui, SiExpress, SiOpencv } from 'react-icons/si';
 import { DiMongodb } from "react-icons/di";
 import { RiNextjsLine } from "react-icons/ri";
@@ -23,13 +23,13 @@ const skills = [
   { name: 'Tailwind CSS', icon: <SiTailwindcss /> },
   { name: 'Socket.io', icon: <SiSocketdotio /> },
   { name: 'WebRTC', icon: <SiWebrtc /> },
-  { name: 'Framer-motion', icon: <SiFramer />},
-  { name: 'Material UI', icon: <SiMui />},
-  { name: 'OpenCV', icon: <SiOpencv />},
-  { name: 'Firebase', icon: <IoLogoFirebase />},
+  { name: 'Framer Motion', icon: <SiFramer /> },
+  { name: 'Material UI', icon: <SiMui /> },
+  { name: 'OpenCV', icon: <SiOpencv /> },
+  { name: 'Firebase', icon: <IoLogoFirebase /> },
 ];
 
-const SkillsCarousel = () => {
+const SkillsCarousel = ({ darkMode }) => {
   const carouselRef = useRef(null);
 
   useEffect(() => {
@@ -46,27 +46,31 @@ const SkillsCarousel = () => {
     // GSAP infinite scrolling animation
     gsap.to(carousel, {
       x: `-${carouselWidth}px`,
-      duration: 30, // Increased duration for slower scrolling
+      duration: 40, // Increased duration for slower scrolling
       ease: 'linear',
       repeat: -1,
       modifiers: {
-        x: (x) => `${parseFloat(x) % carouselWidth}px`, // Modifies the x position to create endless scrolling
+        x: (x) => `${parseFloat(x) % carouselWidth}px`, // Modifies x to create endless scrolling
       },
     });
   }, []);
 
   return (
-    <div className="overflow-hidden w-full bg-transparent p-4 relative shadow-lg rounded-lg">
-      <div ref={carouselRef} className="flex space-x-12 p-4">
+    <div
+      className={`overflow-hidden w-full p-6 relative rounded-lg bg-transparent transition-colors duration-300`}
+    >
+      <div ref={carouselRef} className="flex space-x-12">
         {skills.map((skill, index) => (
           <motion.div
             key={index}
-            className="flex items-center justify-center bg-white text-black rounded-lg p-8 shadow-md transition-transform duration-300 hover:bg-gray-200 hover:scale-105"
-            whileHover={{ scale: 1.05 }}
+            className={`flex items-center justify-center rounded-lg p-6 shadow-lg transition-transform duration-300 hover:scale-105
+              ${darkMode ? 'bg-white text-black' : 'bg-gray-100 text-black'} 
+              hover:bg-gray-300`}
+            whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.95 }}
           >
-            <span className="text-4xl mr-3">{skill.icon}</span>
-            <span className="text-lg font-semibold">{skill.name}</span>
+            <span className="text-3xl md:text-4xl mr-3">{skill.icon}</span>
+            <span className="text-md md:text-lg font-semibold">{skill.name}</span>
           </motion.div>
         ))}
       </div>

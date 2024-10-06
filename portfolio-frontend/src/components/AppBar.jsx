@@ -54,7 +54,7 @@ const AppBar = ({ onThemeToggle }) => {
       </motion.button>
 
       {/* Right Side: Social Icons */}
-      <div className="flex space-x-6 relative">
+      <div className="flex space-x-4 md:space-x-6 relative">
         {/* GitHub Icon with Popover */}
         <motion.div
           className={`icon relative p-3 rounded-full shadow-md hover:shadow-xl transition-shadow transform hover:scale-110 ${
@@ -66,7 +66,7 @@ const AppBar = ({ onThemeToggle }) => {
           <GitHubIcon className={darkTheme ? 'text-white' : 'text-gray-800'} />
           {showPopover.github && (
             <motion.div
-              className="absolute left-0 top-14 bg-white text-gray-800 p-2 rounded-lg shadow-xl text-sm z-10"
+              className="absolute left-0 top-full mt-2 bg-white text-gray-800 p-2 rounded-lg shadow-xl text-sm z-10"
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.3 }}
@@ -87,7 +87,7 @@ const AppBar = ({ onThemeToggle }) => {
           <LinkedInIcon className={darkTheme ? 'text-white' : 'text-blue-600'} />
           {showPopover.linkedin && (
             <motion.div
-              className="absolute left-0 top-14 bg-white text-gray-800 p-2 rounded-lg shadow-xl text-sm z-10"
+              className="absolute left-0 top-full mt-2 bg-white text-gray-800 p-2 rounded-lg shadow-xl text-sm z-10"
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.3 }}
@@ -108,7 +108,7 @@ const AppBar = ({ onThemeToggle }) => {
           <MailIcon className={darkTheme ? 'text-white' : 'text-red-600'} />
           {showPopover.mail && (
             <motion.div
-              className="absolute left-0 top-14 bg-white text-gray-800 p-2 rounded-lg shadow-xl text-sm z-10"
+              className="absolute left-0 top-full mt-2 bg-white text-gray-800 p-2 rounded-lg shadow-xl text-sm z-10"
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.3 }}

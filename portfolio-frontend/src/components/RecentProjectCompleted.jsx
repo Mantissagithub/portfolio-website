@@ -7,19 +7,19 @@ const RecentProjectCompleted = ({ darkTheme }) => {
   const navigate = useNavigate();
 
   return (
-    <div className={`${darkTheme ? 'bg-gray-900 text-white' : 'bg-white text-gray-900'} rounded-lg shadow-xl p-4 w-full lg:w-[100%] mx-auto mt-10 border-2 border-dashed ${darkTheme ? 'border-gray-700' : 'border-gray-300'} flex`}>
+    <div className={`${darkTheme ? 'bg-gray-900 text-white' : 'bg-white text-gray-900'} rounded-lg shadow-xl p-4 w-full mx-auto mt-10 border-2 border-dashed ${darkTheme ? 'border-gray-700' : 'border-gray-300'} flex flex-col lg:flex-row`}>
       
       {/* Left Side: Image Section */}
-      <div className="w-2/5 flex justify-center items-center bg-gray-800 rounded-lg p-2">
+      <div className="w-full lg:w-2/5 flex justify-center items-center bg-gray-800 rounded-lg p-2 mb-4 lg:mb-0">
         <img 
-          src='https://designerapp.officeapps.live.com/designerapp/document.ashx?path=/f6602f02-1b2d-4284-b237-a1ead379165e/DallEGeneratedImages/dalle-8fcc655a-d7d9-4cd7-8b0f-061ecc5e73fb0251674129816025842800.jpg&dcHint=JapanEast&fileToken=6bdd97bb-5210-4aae-9683-49c2e3c1eaf0'
+          src='https://media.istockphoto.com/id/973661382/photo/futuristic-background-of-global-business-network.jpg?s=2048x2048&w=is&k=20&c=AJXI__nV0Y-ItXR5--58odKwgYZNgMWhJBpsAsR97vw='
           alt="Project Image" 
-          className="rounded-md shadow-lg w-full"
+          className="rounded-md shadow-lg w-full h-auto"
         />
       </div>
 
       {/* Right Side: Content Section */}
-      <div className="w-3/5 pl-4">
+      <div className="w-full lg:w-3/5 pl-0 lg:pl-4">
         
         {/* First Line: Status and GitHub Icon */}
         <div className="flex justify-between items-center mb-2">
@@ -50,7 +50,7 @@ const RecentProjectCompleted = ({ darkTheme }) => {
                 repeatType: 'mirror',
               }}
             />
-            <span className="font-semibold">Completed (Features will be added as needed)</span>
+            <span className="font-semibold text-sm">Completed (Features will be added as needed)</span>
           </motion.div>
 
           {/* GitHub Link */}
@@ -73,7 +73,7 @@ const RecentProjectCompleted = ({ darkTheme }) => {
 
         {/* Project Title */}
         <motion.h2
-          className="text-2xl font-bold mb-1"
+          className="text-xl lg:text-2xl font-bold mb-1"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
@@ -83,12 +83,12 @@ const RecentProjectCompleted = ({ darkTheme }) => {
 
         {/* Description */}
         <motion.p
-          className="text-lg leading-relaxed mb-3"
+          className="text-base lg:text-lg leading-relaxed mb-3"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1 }}
         >
-          A feature-rich chat application built using the MERN stack. It includes real-time messaging, group creation, and WebRTC for video calling. This project showcases full-stack development expertise with scalable design.
+          A feature-rich chat application built using the MERN stack. It includes real-time messaging, group creation, and WebRTC for video calling.
         </motion.p>
 
         {/* Technologies Used */}
@@ -104,7 +104,6 @@ const RecentProjectCompleted = ({ darkTheme }) => {
         <motion.button 
           className={`mt-4 px-4 py-2 rounded-full transition duration-300 ${darkTheme ? 'bg-gray-700 text-white hover:bg-gray-600' : 'bg-gray-200 text-gray-900 hover:bg-gray-300'} shadow-md`}
           onClick={() => navigate('/projects')}
-          size="md" // Set size to medium
         >
           More Projects
         </motion.button>

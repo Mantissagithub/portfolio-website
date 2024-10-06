@@ -50,13 +50,15 @@ const Projects = () => {
       {/* Back to Home Button */}
       <button
         onClick={handleBackToHome}
-        className={`fixed top-4 left-4 p-2 rounded-full shadow-lg transition duration-300 ${
+        className={`fixed top-4 left-4 p-2 rounded-full shadow-lg transition duration-300  z-10 ${
           darkTheme ? 'bg-[#A971FF] text-[#F7E7F0] hover:bg-[#A971FF]/80' : 'bg-[#9B5DE5] text-white hover:bg-[#9B5DE5]/80'
         }`}
       >
         Back to Home
       </button>
-
+      <br />
+      <br />
+      
       {/* Header Row */}
       <motion.div
         className="flex justify-between items-center w-full max-w-5xl mb-10 px-8 mt-8"
@@ -97,49 +99,49 @@ const Projects = () => {
         transition={{ duration: 0.8 }}
       />
 
-      {/* Project Flex Container */}
+      {/* Project Grid Container */}
       <motion.div
-        className="flex flex-wrap justify-start w-full max-w-7xl px-6 mb-6"
+        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 w-full max-w-7xl px-6 mb-6"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.5, ease: 'easeIn' }}
       >
-        <div className="project-item w-full md:w-1/2 lg:w-1/3 p-4">
+        <motion.div className="project-item" whileHover={{ scale: 1.05 }}>
           <ChatSphereProject darkTheme={darkTheme} />
-        </div>
-        <div className="project-item w-full md:w-1/2 lg:w-1/3 p-4">
+        </motion.div>
+        <motion.div className="project-item" whileHover={{ scale: 1.05 }}>
           <MultiModalEmotionRecognitionProject darkTheme={darkTheme} />
-        </div>
-        <div className="project-item w-full md:w-1/2 lg:w-1/3 p-4">
+        </motion.div>
+        <motion.div className="project-item" whileHover={{ scale: 1.05 }}>
           <GestureRecognitionProject darkTheme={darkTheme} />
-        </div>
-        <div className="project-item w-full md:w-1/2 lg:w-1/3 p-4">
+        </motion.div>
+        <motion.div className="project-item" whileHover={{ scale: 1.05 }}>
           <SpeechToTextProject darkTheme={darkTheme} />
-        </div>
-        <div className="project-item w-full md:w-1/2 lg:w-1/3 p-4">
+        </motion.div>
+        <motion.div className="project-item" whileHover={{ scale: 1.05 }}>
           <YoloObjectDetectionProject darkTheme={darkTheme} />
-        </div>
-        <div className="project-item w-full md:w-1/2 lg:w-1/3 p-4">
+        </motion.div>
+        <motion.div className="project-item" whileHover={{ scale: 1.05 }}>
           <CourseSellingAppProject darkTheme={darkTheme} />
-        </div>
-        <div className="project-item w-full md:w-1/2 lg:w-1/3 p-4">
+        </motion.div>
+        <motion.div className="project-item" whileHover={{ scale: 1.05 }}>
           <MicrogradProject darkTheme={darkTheme} />
-        </div>
-        <div className="project-item w-full md:w-1/2 lg:w-1/3 p-4">
+        </motion.div>
+        <motion.div className="project-item" whileHover={{ scale: 1.05 }}>
           <VyadhTeamWebsite darkTheme={darkTheme} />
-        </div>
-        <div className="project-item w-full md:w-1/2 lg:w-1/3 p-4">
+        </motion.div>
+        <motion.div className="project-item" whileHover={{ scale: 1.05 }}>
           <PanoramicImageStitchingProject darkTheme={darkTheme} />
-        </div>
-        <div className="project-item w-full md:w-1/2 lg:w-1/3 p-4">
+        </motion.div>
+        <motion.div className="project-item" whileHover={{ scale: 1.05 }}>
           <KVCacheProject darkTheme={darkTheme} />
-        </div>
-        <div className="project-item w-full md:w-1/2 lg:w-1/3 p-4">
+        </motion.div>
+        <motion.div className="project-item" whileHover={{ scale: 1.05 }}>
           <CreditCardCheckoutForm darkTheme={darkTheme} />
-        </div>
-        <div className="project-item w-full md:w-1/2 lg:w-1/3 p-4">
+        </motion.div>
+        <motion.div className="project-item" whileHover={{ scale: 1.05 }}>
           <TodoAppProject darkTheme={darkTheme} />
-        </div>
+        </motion.div>
       </motion.div>
     </div>
   );
