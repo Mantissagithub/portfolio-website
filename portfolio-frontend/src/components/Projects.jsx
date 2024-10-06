@@ -50,7 +50,7 @@ const Projects = () => {
       {/* Back to Home Button */}
       <button
         onClick={handleBackToHome}
-        className={`fixed top-4 left-4 p-2 rounded-full shadow-lg transition duration-300  z-10 ${
+        className={`fixed top-4 left-4 p-2 rounded-full shadow-lg transition duration-300 z-10 ${
           darkTheme ? 'bg-[#A971FF] text-[#F7E7F0] hover:bg-[#A971FF]/80' : 'bg-[#9B5DE5] text-white hover:bg-[#9B5DE5]/80'
         }`}
       >
@@ -67,7 +67,7 @@ const Projects = () => {
         transition={{ duration: 0.8, ease: 'easeOut' }}
       >
         <h1
-          className={`text-6xl font-bold tracking-tight ${
+          className={`text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight ${
             darkTheme ? 'text-[#F7E7F0]' : 'text-[#4B0082]'
           }`}
         >
@@ -77,7 +77,7 @@ const Projects = () => {
         {/* Theme Toggle Button */}
         <button
           onClick={toggleTheme}
-          className={`text-3xl p-4 rounded-full transition-all duration-300 ${
+          className={`text-2xl sm:text-3xl p-4 rounded-full transition-all duration-300 ${
             darkTheme ? 'bg-[#A971FF] text-[#F7E7F0]' : 'bg-[#FFF3DF] text-[#4B0082] hover:bg-[#9B5DE5]/80'
           }`}
         >

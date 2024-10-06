@@ -1,6 +1,6 @@
 import React from 'react';
-import { GitHub } from '@mui/icons-material'; // Import the GitHub icon
-import { motion } from 'framer-motion'; // Optional: You can add framer-motion for animations
+import { GitHub } from '@mui/icons-material';
+import { motion } from 'framer-motion';
 
 const CurrentProject = ({ darkTheme }) => {
   return (
@@ -50,12 +50,12 @@ const CurrentProject = ({ darkTheme }) => {
           transition={{ duration: 0.5 }}
         >
           <a
-            href="https://github.com/Mantissagithub/NoCode-Sensei1" // Replace with your GitHub project URL
+            href="https://github.com/Mantissagithub/NoCode-Sensei1"
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center text-blue-600 hover:underline"
           >
-            <GitHub fontSize="large" /> {/* GitHub Icon */}
+            <GitHub fontSize="large" />
           </a>
         </motion.div>
       </div>
@@ -77,18 +77,14 @@ const CurrentProject = ({ darkTheme }) => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1 }}
       >
-        <div>
-          <span className="block text-gray-500 dark:text-gray-400">Project Type:</span>
-          <span className="block text-gray-800 dark:text-white">Code Generator</span>
-        </div>
-        <div>
-          <span className="block text-gray-500 dark:text-gray-400">Status:</span>
-          <span className="block text-green-500 font-semibold">Active</span>
-        </div>
-        <div>
-          <span className="block text-gray-500 dark:text-gray-400">Updated:</span>
-          <span className="block text-gray-800 dark:text-white">October 2024</span>
-        </div>
+        {['Project Type:', 'Status:', 'Updated:'].map((label, index) => (
+          <div key={index} className="text-center">
+            <span className={`block ${darkTheme ? 'text-gray-500' : 'text-gray-400'} font-semibold`}>{label}</span>
+            <span className={`block ${index === 1 ? 'text-green-500 font-semibold' : darkTheme ? 'text-gray-500' : 'text-gray-400'}`}>
+              {index === 0 ? 'Code Generator' : index === 1 ? 'Active' : 'October 2024'}
+            </span>
+          </div>
+        ))}
       </motion.div>
 
       {/* Description */}
@@ -100,6 +96,24 @@ const CurrentProject = ({ darkTheme }) => {
       >
         NoCodeSensei is an innovative code and project idea generator, empowering users to effortlessly brainstorm and explore new development concepts. By providing tailored suggestions and inspiration, it enhances creativity and accelerates project initiation for developers of all skill levels.
       </motion.p>
+
+      {/* Metallic Shine Effect */}
+      <style jsx>{`
+        .metallic-effect {
+          background-image: linear-gradient(135deg, rgba(255,255,255,.15) 25%, transparent 25%, transparent 50%, rgba(255,255,255,.15) 50%, rgba(255,255,255,.15) 75%, transparent 75%, transparent);
+          background-size: .5rem .5rem;
+          animation: shine .5s infinite linear;
+        }
+
+        @keyframes shine {
+          from {
+            background-position: -200% -200%;
+          }
+          to {
+            background-position: -100% -100%;
+          }
+        }
+      `}</style>
     </div>
   );
 };
