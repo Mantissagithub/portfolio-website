@@ -43,7 +43,7 @@ const HeroPanel = () => {
         </motion.p>
       </div>
       <motion.div
-        className="absolute bottom-2 sm:bottom-4 right-2 sm:right-4 bg-purple-800 text-purple-200 p-2 sm:p-4 rounded-tl-2xl rounded-br-2xl shadow-lg transform rotate-3 sm:rotate-6"
+        className="absolute top-2 right-2 hidden sm:block bg-purple-800 text-purple-200 p-2 sm:p-4 rounded-tl-2xl rounded-br-2xl shadow-lg transform rotate-3"
         initial={{ scale: 0, rotate: 45 }}
         animate={{ scale: 1, rotate: 6 }}
         transition={{ duration: 0.5, delay: 0.4 }}
@@ -53,7 +53,7 @@ const HeroPanel = () => {
       <motion.img
         src="https://e7.pngegg.com/pngimages/488/409/png-clipart-venom-illustration-marvel-avengers-alliance-spider-man-eddie-brock-venom-venom-fictional-character-desktop-wallpaper.png"
         alt="Symbiote Tendrils"
-        className="absolute top-0 left-0 w-full h-full object-cover opacity-5 sm:opacity-10"
+        className="absolute top-0 left-0 w-full h-full object-cover opacity-[0.05] sm:opacity-[0.1]"
         initial={{ opacity: 0 }}
         animate={{ opacity: 0.1 }}
         transition={{ duration: 1, delay: 0.6 }}
