@@ -38,6 +38,7 @@ const SymbioteEffect = () => {
         this.x += this.speedX
         this.y += this.speedY
 
+        // Wrap around logic for edges of the canvas
         if (this.x > canvas.width) this.x = 0
         else if (this.x < 0) this.x = canvas.width
         if (this.y > canvas.height) this.y = 0
@@ -53,6 +54,7 @@ const SymbioteEffect = () => {
       }
     }
 
+    // Create symbiotes
     for (let i = 0; i < symbioteCount; i++) {
       symbiotes.push(new Symbiote())
     }
@@ -82,7 +84,8 @@ const SymbioteEffect = () => {
     }
   }, [])
 
-  return <canvas ref={canvasRef} className="fixed inset-0 pointer-events-none z-10" />
+  // Set z-index lower than other components to ensure it stays in the background.
+  return <canvas ref={canvasRef} className="fixed inset-0 pointer-events-none z-0" />
 }
 
 export default SymbioteEffect
