@@ -16,7 +16,7 @@ interface ProjectCardProps {
 const ProjectCard: React.FC<ProjectCardProps> = ({ project, index }) => {
   return (
     <motion.div
-      className="bg-gray-800 rounded-lg shadow-lg overflow-hidden border-2 border-purple-600"
+      className="bg-gray-800 rounded-lg shadow-lg overflow-hidden border-2 border-purple-600 z-10"
       initial={{ opacity: 0, y: 50 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, delay: index * 0.1 }}

@@ -68,7 +68,7 @@ const ProjectsPage = () => {
         href="https://github.com/Mantissagithub"
         target="_blank"
         rel="noopener noreferrer"
-        className="mt-8 p-4 bg-yellow-500 text-gray-800 font-bold rounded-full text-center shadow-md cursor-pointer comic-button mx-auto"
+        className="mt-8 p-4 bg-yellow-500 text-gray-800 font-bold rounded-full text-center shadow-md cursor-pointer comic-button mx-auto z-10"
         style={{
           display: 'block',
           textDecoration: 'none',
