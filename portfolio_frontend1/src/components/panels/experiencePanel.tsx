@@ -20,12 +20,13 @@ const ExperiencePanel = () => {
         My Symbiote Journey
       </motion.h2>
 
-      <div className="flex items-center space-x-8 w-full overflow-hidden">
-        <div className="flex space-x-3 whitespace-nowrap">
+      {/* Scrollable Wrapper */}
+      <div className="overflow-x-auto">
+        <div className="flex items-center space-x-8 min-w-full">
           {experiences.map((exp, index) => (
             <motion.div
               key={index}
-              className="bg-gray-700 p-4 rounded shadow-md"
+              className="bg-gray-700 p-4 rounded shadow-md flex-shrink-0"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.5, delay: 0.2 * index }}
@@ -58,4 +59,4 @@ const ExperiencePanel = () => {
   )
 }
 
-export default ExperiencePanel
+export default ExperiencePanel;
