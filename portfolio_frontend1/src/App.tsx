@@ -6,6 +6,7 @@ import VenomCursor from './components/venomCursor'
 import MainPage from './components/mainPage'
 import ProjectsPage from './components/projectsPage'
 import Navbar from './components/navbar'
+import ComicSkillsShowcase from './components/skillsPage'
 
 function App() {
   const appRef = useRef<HTMLDivElement>(null)
@@ -27,6 +28,7 @@ function App() {
           <Routes>
             <Route path="/" element={<MainPage />} />
             <Route path="/projects" element={<ProjectsPage />} />
+            <Route path="/skills" element={<ComicSkillsShowcase />} />
           </Routes>
         </div>
       </div>
