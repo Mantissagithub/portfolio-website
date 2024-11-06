@@ -78,7 +78,7 @@ const Navbar = () => {
             variants={menuVariants}
           >
             <div className="px-4 py-2 space-y-2">
-              {['Home', 'Skills', 'Projects'].map((item, index) => (
+              {['Home', 'Skills', 'Projects'].map((item) => (
                 <motion.div key={item} variants={linkVariants}>
                   <Link 
                     to={item === 'Home' ? '/' : `/${item.toLowerCase()}`}
