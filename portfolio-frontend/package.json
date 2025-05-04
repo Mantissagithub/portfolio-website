@@ -17,6 +17,7 @@
     "autoprefixer": "^10.4.20",
     "framer-motion": "^11.9.0",
     "gsap": "^3.12.5",
+    "lucide-react": "^0.507.0",
     "matter-js": "^0.20.0",
     "postcss": "^8.4.47",
     "qrcode.react": "^4.0.1",

@@ -7,8 +7,8 @@ const ContactInfoPanel = () => {
   const contactInfo = [
     { label: "Mail", value: "pradheep.raop@gmail.com", icon: <FiMail /> },
     { label: "GitHub", value: "https://github.com/Mantissagithub", icon: <FiGithub />, link: "https://github.com/Mantissagithub" },
-    { label: "LinkedIn", value: "https://www.linkedin.com/in/pradheep-rao-88a339250/", icon: <FiLinkedin />, link: "https://www.linkedin.com/in/pradheep-rao-88a339250/" },
-    { label: "X (Twitter)", value: "https://x.com/rao_pradheep", icon: <FiTwitter />, link: "https://x.com/rao_pradheep" },
+    { label: "LinkedIn", value: "https://www.linkedin.com/in/pradheepraop/", icon: <FiLinkedin />, link: "https://www.linkedin.com/in/pradheep-rao-88a339250/" },
+    // { label: "X (Twitter)", value: "https://x.com/rao_pradheep", icon: <FiTwitter />, link: "https://x.com/rao_pradheep" },
   ]
 
   return (

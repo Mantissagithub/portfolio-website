@@ -2,68 +2,90 @@
 
 // import { useEffect, useRef } from 'react'
 import { motion } from 'framer-motion'
-import { 
-  Code2, FileType, FileCode, FileJson, Coffee, Globe, Atom, Server, 
-  Workflow, Database, ServerCog , Brain, Zap, Box, Flame, Microscope, 
-  Layers, Eye, Camera, Package, ScanFace, Cog, Wrench, GitBranch, 
-  Container, Cpu, Terminal, Code
-} from 'lucide-react'
+import {
+  Code2,
+  FileType,
+  FileCode,
+  FileJson,
+  Coffee,
+  Globe,
+  Atom,
+  Server,
+  Database,
+  Brain,
+  Zap,
+  Box,
+  Flame,
+  Layers,
+  Eye,
+  Wrench,
+  GitBranch,
+  Container,
+  Cpu,
+  Terminal,
+  Rocket,
+  Award,
+  GraduationCap,
+  Briefcase,
+  Laptop,
+  Bot,
+  FastForward,
+  Sparkles,
+} from "lucide-react"
 
 const skillCategories = [
   {
-    name: "Symbiote Languages",
+    name: "Programming",
     icon: Code2,
     skills: [
-      { name: "Python", icon: FileType },
-      { name: "C++", icon: FileCode },
       { name: "JavaScript", icon: FileJson },
       { name: "TypeScript", icon: FileType },
+      { name: "Python", icon: FileType },
+      { name: "C++", icon: FileCode },
+      { name: "C", icon: FileCode },
       { name: "Java", icon: Coffee },
-    ]
+    ],
   },
   {
-    name: "Web Tendrils",
+    name: "Web Development",
     icon: Globe,
     skills: [
-      { name: "React", icon: Atom },
+      { name: "React.js", icon: Atom },
+      { name: "Next.js", icon: FastForward },
       { name: "Node.js", icon: Server },
-      { name: "Express", icon: Workflow },
+      { name: "Express.js", icon: Server },
+      { name: "FastAPI", icon: Zap },
+      { name: "Tailwind CSS", icon: Sparkles },
+      { name: "MUI", icon: Layers },
       { name: "MongoDB", icon: Database },
-      { name: "Flask", icon: ServerCog },
-    ]
+      { name: "Prisma ORM", icon: Database },
+    ],
   },
   {
-    name: "Neural Symbiosis",
+    name: "AI/ML",
     icon: Brain,
     skills: [
-      { name: "Transformers", icon: Zap },
-      { name: "TensorFlow", icon: Box },
-      { name: "PyTorch", icon: Flame },
-      { name: "Scikit-learn", icon: Microscope },
-      { name: "Keras", icon: Layers },
-    ]
+      { name: "Deep Learning", icon: Zap },
+      { name: "NLP", icon: Box },
+      { name: "Transformers", icon: Flame },
+      { name: "Computer Vision", icon: Eye },
+      { name: "LLM", icon: Brain },
+    ],
   },
   {
-    name: "Symbiote Vision",
-    icon: Eye,
-    skills: [
-      { name: "OpenCV", icon: Camera },
-      { name: "Mediapipe", icon: Package },
-      { name: "YOLO", icon: ScanFace },
-      { name: "Roboflow", icon: Cog },
-    ]
-  },
-  {
-    name: "Alien Arsenal",
+    name: "Tools",
     icon: Wrench,
     skills: [
       { name: "Git", icon: GitBranch },
       { name: "Docker", icon: Container },
-      { name: "ROS", icon: Cpu },
-      { name: "Linux", icon: Terminal },
-      { name: "VS Code", icon: Code },
-    ]
-  }
+      { name: "ROS2", icon: Cpu },
+      { name: "Apache Kafka", icon: Server },
+      { name: "Apache Airflow", icon: Zap },
+      { name: "Linux/Unix", icon: Terminal },
+      { name: "Ollama", icon: Bot },
+      { name: "Raspberry Pi", icon: Cpu },
+    ],
+  },
 ]
 
 export default function ComicSkillsShowcase() {
